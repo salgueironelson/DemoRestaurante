@@ -46,13 +46,13 @@ namespace DemoRestaurante.Api.Controllers
                 }
                 else
                 {
-                    return BadRequest("Restaurante no existe");
+                    return BadRequest("Restaurante no existe!!");
                 }
 
             }
             else
             {
-                return BadRequest("Restaurante no existe");
+                return BadRequest("Restaurante no existe!!");
             }
         }
 
