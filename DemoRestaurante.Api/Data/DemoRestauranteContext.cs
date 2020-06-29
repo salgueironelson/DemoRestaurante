@@ -32,9 +32,7 @@ namespace DemoRestaurante.Api.Data
         {
             modelBuilder.Entity<Plato>(entity =>
             {
-                entity.Property(e => e.PlatoId)
-                    .HasColumnName("PlatoID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.PlatoId).HasColumnName("PlatoID");
 
                 entity.Property(e => e.Calificacion).HasColumnType("decimal(10, 2)");
 
@@ -61,14 +59,12 @@ namespace DemoRestaurante.Api.Data
                 entity.HasOne(d => d.Restaurante)
                     .WithMany(p => p.Plato)
                     .HasForeignKey(d => d.RestauranteId)
-                    .HasConstraintName("FK__Plato__Restauran__4BAC3F29");
+                    .HasConstraintName("FK__Plato__Restauran__5EBF139D");
             });
 
             modelBuilder.Entity<Restaurante>(entity =>
             {
-                entity.Property(e => e.RestauranteId)
-                    .HasColumnName("RestauranteID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.RestauranteId).HasColumnName("RestauranteID");
 
                 entity.Property(e => e.Direccion)
                     .IsRequired()
