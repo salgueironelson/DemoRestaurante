@@ -38,7 +38,7 @@ namespace DemoRestaurante.Api.Data
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
-                    .HasMaxLength(15)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Plato1)
@@ -54,6 +54,10 @@ namespace DemoRestaurante.Api.Data
                 entity.Property(e => e.TipoPlato)
                     .IsRequired()
                     .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ImageUrl)
+                    .HasMaxLength(250)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Restaurante)

@@ -10,6 +10,7 @@ namespace DemoRestaurante.Api.Entities.Models
         public string TipoPlato { get; set; }
         public string Plato1 { get; set; }
         public string Descripcion { get; set; }
+        public string ImageUrl { get; set; }
         public decimal? Calificacion { get; set; }
         public int? Ratings { get; set; }
 

@@ -19,42 +19,49 @@ namespace DemoRestaurante.Api.Controllers
     {
         private UnitOfWork unitOfWork = new UnitOfWork(new DemoRestauranteContext());
 
-        [HttpGet("{idRestaurante}")]
-        public IActionResult GetAllPlatoByRestaurante(int idRestaurante)
+        [HttpGet]
+
+        public IActionResult GetAllPlato()
         {
-            if (idRestaurante != 0)
+            try
             {
-                var user = unitOfWork.Restaurantes.Get(x => x.RestauranteId == idRestaurante);
-                if (user != null)
-                {
-                    var platos = unitOfWork.Platos.Get(x => x.RestauranteId == idRestaurante);
-                    if (platos != null)
-                    {
-                        var result = CreateMappedObject(platos);
-
-                        var serializedlist = JsonConvert.SerializeObject(result, Formatting.Indented,
-                            new JsonSerializerSettings()
-                            {
-                                ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                            });
-
-
-                        return Ok(serializedlist);
-                    }
-                    else
-                        return NoContent();
-                }
+                var platos = unitOfWork.Platos.Get();
+                if (platos != null)
+                    return Ok(platos);
                 else
-                {
-                    return BadRequest("Restaurante no existe!!");
-                }
-
+                    return Ok();
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest("Restaurante no existe!!");
+
+                throw ex;
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetPlatoDetails(int Id)
+        {
+            Plato plato = unitOfWork.Platos.GetByID(Id);
+            if (plato != null)
+                return Ok(plato);
+            else
+            {
+                return NoContent();
+            }
+        }
+
+        [HttpGet("Restaurante/{id}")]
+        public IActionResult GetPlatosRestaurante(int Id)
+        {
+            var platos = unitOfWork.Platos.Get(p => p.RestauranteId == Id);
+            if (platos != null)
+                return Ok(platos);
+            else
+            {
+                return NoContent();
+            }
+        }
+
 
         private PlatosList CreateMappedObject(IEnumerable<Plato> platos)
         {
@@ -66,79 +73,52 @@ namespace DemoRestaurante.Api.Controllers
             }
 
             return listPlatos;
-        }
+        }     
 
-        [HttpGet("{id}/{platoid, }")]
-        public IActionResult GetPlatoDetails(int Id, bool isHamburguesa)
-        {
-            if (isHamburguesa)
-            {
 
-                var plato = unitOfWork.Platos.Get(p => p.PlatoId == Id);
-                if (plato != null)
-                    return Ok(plato);
-                else
-                {
-                    return NoContent();
-                }
-            }
-            else
-            {
-                return NoContent();
-            }
-        }
-
-        [HttpPost("{idRestaurante}")]
-        public IActionResult CreatePlato([FromBody] Restaurante restaurante, int idRestaurante)
+        [HttpPost]
+        public IActionResult CreatePlato([FromBody] Plato plato)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    unitOfWork.Restaurantes.Insert(restaurante);
-                    unitOfWork.Save();
-
-                    Plato plato = new Plato();
-                    plato.RestauranteId = idRestaurante;
-                    plato.PlatoId = restaurante.RestauranteId;
                     unitOfWork.Platos.Insert(plato);
                     unitOfWork.Save();
-                    return Created("DemoRestaurante/CreateContact", restaurante);
+
+                    
+                    return Created("DemoRestaurante/Create", plato);
                 }
             }
             catch (DataException ex)
             {
                 return BadRequest(ex);
             }
-            return BadRequest(restaurante);
+            return BadRequest(plato);
         }
+
 
         [HttpPut("{id}")]
         public IActionResult UpdatePlato([FromRoute] int id, [FromBody] Plato plato)
         {
-            Plato PlatoSearch = unitOfWork.Platos.GetByID(id);
-            if (PlatoSearch != null)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    if (ModelState.IsValid)
-                    {
-                        unitOfWork.Platos.Update(plato);
-                        unitOfWork.Save();
-                        return Ok();
-                    }
+                    unitOfWork.Platos.Update(plato);
+                    unitOfWork.Save();
+                    return Ok();
                 }
-                catch (DataException ex)
-                {
-                    return BadRequest(ex);
-                }
+                else
+                    return BadRequest();
             }
-            else
+            catch (DataException ex)
             {
-                return NotFound("El Plato que intenta actualizar no existe");
+                return BadRequest(ex);
             }
-            return BadRequest();
         }
+
+
 
         [HttpDelete("{id}")]
         public IActionResult DeletePlato(int Id)
