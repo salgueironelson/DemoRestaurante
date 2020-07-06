@@ -6,11 +6,16 @@
              mc:Ignorable="d"
              x:Class="DemoRestaurante.XF.MainPage">
 
-    <StackLayout>
+    <StackLayout Margin="10" Spacing="10">
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Button x:Name="BtnStack"
+                Text="StackLayout"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnBtnStack_Clicked" />
+        <Button x:Name="BtnGrid"
+                Text="Grid"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnBtnGrid_Clicked" />
     </StackLayout>
 
 </ContentPage>

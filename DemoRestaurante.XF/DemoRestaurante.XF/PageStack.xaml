@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             mc:Ignorable="d"
+             x:Class="DemoRestaurante.XF.PageStack">
+    <ContentPage.Content>
+        <StackLayout Margin="10" >
+            <StackLayout Orientation="Horizontal"  Spacing="10" HeightRequest="120">
+                <Button BackgroundColor="LightPink" Text="1" HorizontalOptions="FillAndExpand" />
+                <Button BackgroundColor="DeepPink" Text="2" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal"  Spacing="10" HeightRequest="200">
+                <Button BackgroundColor="DeepPink" HorizontalOptions="FillAndExpand"/>
+                <Button BackgroundColor="LightPink" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <Button BackgroundColor="HotPink" VerticalOptions="FillAndExpand"/>
+
+
+         </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

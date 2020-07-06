@@ -17,5 +17,15 @@ namespace DemoRestaurante.XF
         {
             InitializeComponent();
         }
+
+        private async void OnBtnStack_Clicked(object sender, EventArgs e)
+        {
+            await  Navigation.PushAsync(new PageStack());
+        }
+
+        private async void OnBtnGrid_Clicked(object sender, EventArgs e)
+        {
+            await  Navigation.PushAsync(new PageGrid());
+        }
     }
 }
