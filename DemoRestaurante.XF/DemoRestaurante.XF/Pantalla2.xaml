@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="DemoRestaurante.XF.Pantalla2"
+             Title="Pantalla 2">
+    <ContentPage.Content>
+        <Grid BackgroundColor="Beige"
+              Margin="10"
+              Padding="10, 5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.7*"/>
+                </Grid.ColumnDefinitions>
+                <Image BackgroundColor="White"
+                       Grid.Row="0"
+                       Grid.RowSpan="2"
+                       Grid.Column="0"/>
+                <Label FontSize="Medium"
+                       TextColor="Black"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalTextAlignment="Start"
+                   Text="Título"
+                   VerticalOptions="Center"/>
+                <Label FontSize="Medium"
+                       TextColor="Black"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   HorizontalTextAlignment="Start"
+                   Text="Descripción del Producto"
+                   VerticalOptions="Center"/>
+            </Grid>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="DemoRestaurante.XF.PageGrid">
     <ContentPage.Content>
-        <Grid Margin="5">
+        <Grid Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="2*" />

@@ -20,12 +20,12 @@ namespace DemoRestaurante.XF
 
         private async void OnBtnStack_Clicked(object sender, EventArgs e)
         {
-            await  Navigation.PushAsync(new PageStack());
+            await  Navigation.PushAsync(new Pantalla1());
         }
 
         private async void OnBtnGrid_Clicked(object sender, EventArgs e)
         {
-            await  Navigation.PushAsync(new PageGrid());
+            await  Navigation.PushAsync(new Pantalla2());
         }
     }
 }
